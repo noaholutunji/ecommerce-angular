@@ -1,0 +1,12 @@
+.register-form {
+  width: 20rem;
+  background: lightgray;
+}
+
+@media(min-width:768px) {
+  .register-form {
+    width: 1000px;;
+    margin-bottom: 10rem;
+    margin-top: 5rem;
+  }
+}
