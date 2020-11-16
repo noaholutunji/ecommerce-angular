@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   cartProducts: Observable<Array<any>>;
   cartTotal: any = this.store.select(store => store.cartList.total);
   total: any;
-  private userSub: Subscription;
+  private userSubscription: Subscription;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -31,10 +31,8 @@ export class CartComponent implements OnInit {
     this.cartTotal.subscribe( currentTotal => {
       this.total = currentTotal;
     });
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSubscription = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
     });
   }
 

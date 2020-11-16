@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   currentProduct = null;
   message = '';
   isAuthenticated = false;
-  private userSub: Subscription;
+  private userSubscription: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -30,7 +30,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.message = '';
     this.getProduct(this.route.snapshot.paramMap.get('id'));
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSubscription = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
   }
