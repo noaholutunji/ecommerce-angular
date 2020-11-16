@@ -44,7 +44,7 @@ export class EditProductComponent implements OnInit {
       description: this.currentProduct.description
     }
 
-    this.productService.update(this.currentProduct._id, data)
+    this.productService.updateProduct(this.currentProduct._id, data)
       .subscribe(
         response => {
           console.log(response);
