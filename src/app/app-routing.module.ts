@@ -10,6 +10,7 @@ import { NewProductComponent } from './products/new-product/new-product.componen
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -23,6 +24,9 @@ const routes: Routes = [
   { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

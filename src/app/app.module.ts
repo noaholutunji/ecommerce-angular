@@ -19,6 +19,7 @@ import { CartComponent } from './cart/cart.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     EditProductComponent,
     CartComponent,
     CheckoutComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
