@@ -1,5 +1,9 @@
 <div *ngIf="!hasProducts" class="cart-footer-1">
-  <h3 class="text-center my-4">Your Cart is empty.</h3>
+  <h3 class="text-center my-5">Your Cart is empty.</h3>
+  <img class="rounded mx-auto d-block rounded-circle bg-warning mt-5" src="https://www.jumia.com.ng/images/oshun/cart/empty-cart.png" alt="cart-image" />
+  <div class="text-center">
+    <button routerLink="/products" type="button" class="btn btn-warning btn-lg text-white mt-5">Start Shopping</button>
+  </div>
 </div>
 <div *ngIf="hasProducts" class="container my-4">
   <section>
