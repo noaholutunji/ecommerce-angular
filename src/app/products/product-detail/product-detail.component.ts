@@ -47,7 +47,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.productService.delete(this.currentProduct._id)
+    this.productService.deleteProduct(this.currentProduct._id)
       .subscribe(
         response => {
           alert("product deleted successfully")

@@ -42,9 +42,8 @@ export class ProductService {
     return this.http.get(`${baseUrl}/${productId}`);
   }
 
-  update(id, data): Observable<any> {
+  updateProduct(id, data): Observable<any> {
     const token = localStorage.getItem('token').replace(/['"]+/g, '');
-
     return this.http.patch<ProductResponseData>(`https://noah-ninostyle-api.herokuapp.com/products/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +53,7 @@ export class ProductService {
   }
 
 
-  delete(id): Observable<any> {
+  deleteProduct(id): Observable<any> {
     const token = localStorage.getItem('token').replace(/['"]+/g, '');
 
     return this.http.delete(`${baseUrl}/${id}`, {
