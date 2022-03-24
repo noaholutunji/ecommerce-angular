@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { User } from './user';
 
 
+const baseUrl = 'https://noah-ninostyle-api.herokuapp.com'
 @Injectable({
   providedIn: 'root'
 })
@@ -23,27 +24,26 @@ export class AccountService {
 
   public get userValue(): User {
     return this.userSubject.value;
-}
+  }
 
-login(email, password) {
-    return this.http.post<User>('https://noah-ninostyle-api.herokuapp.com/login', { email, password })
-        .pipe(map(user => {
-            localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('token', JSON.stringify(user.token));
-            this.userSubject.next(user);
-            return user;
-        }));
-}
+  login(email, password) {
+    return this.http.post<User>(baseUrl + '/login', { email, password })
+      .pipe(map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', JSON.stringify(user.token));
+        this.userSubject.next(user);
+        return user;
+      }));
+  }
 
-logout() {
+  logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.userSubject.next(null);
     this.router.navigate(['/login']);
-}
+  }
 
-register(user: User) {
-    return this.http.post('https://noah-ninostyle-api.herokuapp.com/register', user);
-}
-
+  register(user: User) {
+    return this.http.post(baseUrl + '/register', user);
+  }
 }

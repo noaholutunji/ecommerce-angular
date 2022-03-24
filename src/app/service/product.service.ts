@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 
 
 interface ProductResponseData {
@@ -14,25 +13,24 @@ interface ProductResponseData {
 }
 
 const baseUrl = 'https://noah-ninostyle-api.herokuapp.com/products';
-console.log(baseUrl);
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient) { }
 
   createProduct(data): Observable<any> {
       const token = localStorage.getItem('token').replace(/['"]+/g, '');
 
-      return this.http.post('https://noah-ninostyle-api.herokuapp.com/products', data , {
+      return this.http.post(baseUrl, data , {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       });
     }
-
 
   getAllProducts(): Observable<any> {
     return this.http.get(baseUrl);
@@ -44,14 +42,13 @@ export class ProductService {
 
   updateProduct(id, data): Observable<any> {
     const token = localStorage.getItem('token').replace(/['"]+/g, '');
-    return this.http.patch<ProductResponseData>(`https://noah-ninostyle-api.herokuapp.com/products/${id}`, data, {
+    return this.http.patch<ProductResponseData>(`${baseUrl}/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
     }
     });
   }
-
 
   deleteProduct(id): Observable<any> {
     const token = localStorage.getItem('token').replace(/['"]+/g, '');
