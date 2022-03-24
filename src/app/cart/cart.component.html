@@ -1,7 +1,7 @@
-<div *ngIf="!isLoaded" class="cart-footer-1">
+<div *ngIf="!hasProducts" class="cart-footer-1">
   <h3 class="text-center my-4">Your Cart is empty.</h3>
 </div>
-<div *ngIf="isLoaded" class="container my-4">
+<div *ngIf="hasProducts" class="container my-4">
   <section>
     <div class="row cart-footer-2">
       <div class="col-lg-8">

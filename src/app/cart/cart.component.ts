@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   cartTotal: any = this.store.select(store => store.cartList.total);
   total: any;
   private userSubscription: Subscription;
-  isLoaded = false;
+  hasProducts = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
     this.cartProducts = this.store.select(store => store.cartList.addedItems);
     this.cartTotal.subscribe( currentTotal => {
       this.total = currentTotal;
-      this.isLoaded = !!currentTotal;
+      this.hasProducts = !!currentTotal;
     });
     this.userSubscription = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
