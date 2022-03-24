@@ -1,0 +1,43 @@
+<div class="container mt-5 mx-auto register-form">
+  <form class="p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p class="h4 mb-4 text-center">Register</p>
+      <div class="form-group">
+        <span class="text-left mb-1">First Name</span>
+        <input type="name" formControlName="firstname" class="form-control mb-2 mt-1" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }">
+        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+          <div *ngIf="f.firstname.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="text-left mb-1">Last Name</span>
+        <input type="name" formControlName="lastname" class="form-control mb-2 mt-1" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+          <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="text-left mb-1">Email</span>
+        <input type="email" formControlName="email" class="form-control mb-2 mt-1" placeholder="E-mail" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Enter a Valid Email</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="text-left mb-1">Phone Number</span>
+        <input type="number" formControlName="phonenumber" class="form-control mb-2 mt-1" placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }">
+        <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+          <div *ngIf="f.telephone.errors.required">Phone number is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="text-left mb-1">Password</span>
+        <input type="password" formControlName="password" class="form-control mb-2 mt-1" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+    <button [disabled]="loading" class="btn btn-dark btn-block my-4">Register</button>
+  </form>
+</div>
+

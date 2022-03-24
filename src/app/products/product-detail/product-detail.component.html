@@ -1,0 +1,61 @@
+<!-- Desktop -->
+<div class="d-none d-md-block">
+  <div class="container mt-5">
+    <div class="card">
+      <div class="d-flex align-items-center" *ngIf="currentProduct">
+        <div class="">
+          <div class="card card-image">
+            <img src="{{ currentProduct.image }}" class="card-img-top" alt="{{ currentProduct.name }}">
+            <hr>
+            <div class="d-flex justify-content-center my-4">
+              <a *ngIf="isAuthenticated" routerLink="/products/edit/{{ currentProduct._id }}" class="mr-4 btn btn-lg btn-info text-uppercase text-white">Edit</a>
+              <a *ngIf="isAuthenticated" (click)="deleteProduct()" class="btn btn-lg btn-danger text-uppercase text-white">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="ml-5">
+          <h5><strong>Name: </strong> {{ currentProduct.name }}</h5>
+          <h5><strong>Brand: </strong>{{ currentProduct.brand }}</h5>
+          <h5><strong>Price: </strong>₦ {{ currentProduct.price }}</h5>
+          <h5><strong>Description: </strong>{{ currentProduct.description }}</h5>
+          <a (click)="addCart()" class="mx-5 mt-5 btn btn-lg btn-secondary text-uppercase text-white">
+            <i class="fa fa-shopping-cart pr-2"></i> Add to cart
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile -->
+<div class="d-block d-md-none">
+  <div class="container mt-5">
+    <div class="card">
+      <div class="d-flex align-items-center" *ngIf="currentProduct">
+        <div class="">
+          <div class="card card-image">
+            <img src="{{ currentProduct.image }}" class="card-img-top" alt="{{ currentProduct.name }}">
+            <hr>
+            <div class="ml-2 my-2">
+              <h5><strong>Name: </strong> {{ currentProduct.name }}</h5>
+              <h5><strong>Brand: </strong>{{ currentProduct.brand }}</h5>
+              <h5><strong>Price: </strong>₦ {{ currentProduct.price }}</h5>
+              <h5><strong>Description: </strong>{{ currentProduct.description }}</h5>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center mb-4 mx-2">
+              <a *ngIf="isAuthenticated" routerLink="/products/edit/{{ currentProduct._id }}" class="mr-2 lg:mr-4 btn btn-lg btn-info text-uppercase text-white">Edit</a>
+              <a *ngIf="isAuthenticated" (click)="deleteProduct()" class="btn btn-lg btn-danger text-uppercase text-white">Delete</a>
+            </div>
+            <a (click)="addCart()" class="mx-5 mb-4 btn btn-lg btn-secondary text-uppercase text-white">
+              <i class="fa fa-shopping-cart pr-2"></i> Add to cart
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

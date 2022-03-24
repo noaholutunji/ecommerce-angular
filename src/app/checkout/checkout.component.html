@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-6 col-12 p-5">
+    <h3 class="text-center">Checkout</h3>
+    <form class="p-lg-5" #checkForm="ngForm">
+      <div class="form-group pb-3 px-lg-5">
+        <input type="text" class="form-control" placeholder="First Name" ngModel name="firstname" required firstname>
+      </div>
+      <div class="form-group pb-3 px-lg-5">
+        <input type="text" class="form-control"  placeholder="Last Name" ngModel name="lastname" required lastname>
+      </div>
+      <div class="form-group pb-3 px-lg-5">
+        <input type="email" class="form-control" placeholder="Phone Number" ngModel name="phone" required number>
+      </div>
+      <div class="form-group pb-3 px-lg-5">
+        <input type="email" class="form-control" placeholder="Email" ngModel name="email" required email>
+      </div>
+      <div class="form-group pb-3 px-lg-5">
+        <input type="text" class="form-control" placeholder="Shipping Address" ngModel name="shipping" required shipping>
+      </div>
+      <div class="ml-5">
+        <button  type="button" class="btn btn-dark" data-toggle="modal"  data-target="#exampleModal" [disabled]="!checkForm.valid">Confirm Order</button>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Orders</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Your Order is been processed! It will arrived between 1-3 business days. Thank you.
+            </div>
+            <div class="modal-footer">
+              <a href="/products" class="btn btn-secondary">Close</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6 col-12 p-5">
+    <h3 class="text-center mb-5">Order Summary</h3>
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of (products | async)">
+            <th scope="row">
+              <div>{{ product.name }}</div>
+            </th>
+            <td >
+              <div class="">
+                {{ product.quantity }}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                ₦ {{ product.price * product.quantity }}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkout-total-text my-4">
+      Total: ₦ {{ total }}
+    </div>
+  </div>
+</div>
+
+
