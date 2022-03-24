@@ -10,6 +10,7 @@ import { NewProductComponent } from './products/new-product/new-product.componen
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -17,11 +18,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'products/new', component: NewProductComponent  },
-  { path: 'products/:id', component: ProductDetailComponent  },
-  { path: 'products/edit/:id', component: EditProductComponent  },
+  { path: 'products/new', component: NewProductComponent, canActivate: [AuthGuard]  },
+  { path: 'products/:id', component: ProductDetailComponent, canActivate: [AuthGuard]  },
+  { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthGuard]  },
   { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
